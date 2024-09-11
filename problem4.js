@@ -10,12 +10,15 @@ function calculateFinalScore(obj) {
         
         return grade >= 80 ? true : false;
     }
+    else{
+        return false
+    }
 }
 
 
-console.log(calculateFinalScore({ name: "Rajib", testScore: 50,  schoolGrade: 25, isFFamily : true  }));
+console.log(calculateFinalScore({ name: "Rajib", testScore: 51,  schoolGrade: 31, isFFamily : true  }));
 
-console.log(calculateFinalScore({ name: "Rajib", testScore: 45,  schoolGrade: 25, isFFamily : false }));
+console.log(calculateFinalScore({ name: "Rajib", testScore: 45,  schoolGrade: 31, isFFamily : false }));
 
 console.log(calculateFinalScore("hello"));
 

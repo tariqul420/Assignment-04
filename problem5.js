@@ -3,14 +3,18 @@ function  waitingTime(waitingTimes  , serialNumber) {
         return "Invalid Input"
     }
 
-    let sum = 0;
-    for(const time of waitingTimes){
+    if(waitingTimes.length < serialNumber){
+        let sum = 0;
+        for(const time of waitingTimes){
         sum += time;
+        }
+        const avgTime = Math.round(sum / waitingTimes.length)
+        const personSiNo = serialNumber - 1;
+        const personSiBefore = personSiNo - waitingTimes.length;
+        return personSiBefore * avgTime;
+    }else{
+        return "Invalid Input";
     }
-    const avgTime = Math.round(sum / waitingTimes.length)
-    const personSiNo = serialNumber - 1;
-    const personSiBefore = personSiNo - waitingTimes.length;
-    return personSiBefore * avgTime;
 }
 
 
@@ -21,3 +25,4 @@ console.log(waitingTime([6], 4));
 console.log(waitingTime(7 , 10));
 console.log(waitingTime("[6,2]", 9));
 console.log(waitingTime([7, 8, 3, 4, 5], "9"));
+console.log(waitingTime([7, 8, 3, 4, 5], 6));

@@ -1,5 +1,3 @@
-
-// ? Problem no1
 function calculateTax(income, expenses) {
     if(income <= 0 || expenses <= 0 || income < expenses){
         return  "Invalid Input";
@@ -10,20 +8,21 @@ function calculateTax(income, expenses) {
     return tax;
 }
 
-//? problem no2
 function sendNotification(email) {
     if(!email.includes("@")){
         return "Invalid Email";
     }
-
     const usernameDomainName = email.split("@");
-    const username = usernameDomainName[0];
-    const domainName = usernameDomainName[1];
-    const output = username + " sent you an email from " + domainName;
-    return output;
+    if(usernameDomainName.length === 2){
+        const username = usernameDomainName[0];
+        const domainName = usernameDomainName[1];
+        const output = username + " sent you an email from " + domainName;
+        return output;
+    }else{
+        return "Invalid Email";
+    }
 }
 
-//? problem no3
 function checkDigitsInName(name) {
     if(typeof name !== "string"){
         return "Invalid Input";
@@ -38,7 +37,6 @@ function checkDigitsInName(name) {
     return false;
 }
 
-//? problem no4
 function calculateFinalScore(obj) {
     if(typeof obj !== "object"){
         return "Invalid Input"
@@ -51,20 +49,26 @@ function calculateFinalScore(obj) {
         
         return grade >= 80 ? true : false;
     }
+    else{
+        return false
+    }
 }
 
-// ? problem no5
 function  waitingTime(waitingTimes  , serialNumber) {
     if(Array.isArray(waitingTimes) === false || typeof serialNumber !== "number"){
         return "Invalid Input"
     }
 
-    let sum = 0;
-    for(const time of waitingTimes){
+    if(waitingTimes.length < serialNumber){
+        let sum = 0;
+        for(const time of waitingTimes){
         sum += time;
+        }
+        const avgTime = Math.round(sum / waitingTimes.length)
+        const personSiNo = serialNumber - 1;
+        const personSiBefore = personSiNo - waitingTimes.length;
+        return personSiBefore * avgTime;
+    }else{
+        return "Invalid Input";
     }
-    const avgTime = Math.round(sum / waitingTimes.length)
-    const personSiNo = serialNumber - 1;
-    const personSiBefore = personSiNo - waitingTimes.length;
-    return personSiBefore * avgTime;
 }
