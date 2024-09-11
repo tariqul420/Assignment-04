@@ -52,3 +52,19 @@ function calculateFinalScore(obj) {
         return grade >= 80 ? true : false;
     }
 }
+
+// ? problem no5
+function  waitingTime(waitingTimes  , serialNumber) {
+    if(Array.isArray(waitingTimes) === false || typeof serialNumber !== "number"){
+        return "Invalid Input"
+    }
+
+    let sum = 0;
+    for(const time of waitingTimes){
+        sum += time;
+    }
+    const avgTime = Math.round(sum / waitingTimes.length)
+    const personSiNo = serialNumber - 1;
+    const personSiBefore = personSiNo - waitingTimes.length;
+    return personSiBefore * avgTime;
+}
